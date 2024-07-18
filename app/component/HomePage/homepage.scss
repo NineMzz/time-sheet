@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+.homepage-container {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+}
+  
+.logo {
+    margin-top:150px;
+    justify-content: center;
+    align-items: center;
+    width:320px;
+    height:320px; 
+}
+  
+.date-picker {
+    font-family: "Nunito", sans-serif;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 10px;
+    color:#000000;
+    background-color: #FFFFFF;
+}
+
+.get-event {
+    display: inline-flex;
+    height: 2em;
+    min-height: 2rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    user-select: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--rounded-get-event, 0.5rem);
+    border-color: transparent;
+    border-color: oklch(var(--get-event-color, var(--b2)) / var(--tw-border-opacity));
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 15px;
+    line-height: 1em;
+    gap: 0.5rem;
+    font-weight: 600;
+    text-decoration-line: none;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    border-width: var(--border-get-event, 1px);
+    transition-property: color, background-color, border-color, opacity, box-shadow, transform;
+    --tw-text-opacity: 1;
+    color: #FFFFFF;
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    outline-color: var(--fallback-bc,oklch(var(--bc)/1));
+    background-color: #72B544;
+    --tw-bg-opacity: 1;
+    --tw-border-opacity: 1;
+}
+.get-event-disabled,
+  .get-event[disabled],
+  .get-event:disabled {
+    pointer-events: none;
+}
+.get-event-disabled,
+  .get-event[disabled],
+  .get-event:disabled {
+    pointer-events: none;
+}
+:where(.get-event:is(input[type="checkbox"])),
+:where(.get-event:is(input[type="radio"])) {
+    width: auto;
+    appearance: none;
+}
+:where(.get-event:is(input[type="checkbox"])),
+:where(.get-event:is(input[type="radio"])) {
+    width: auto;
+    appearance: none;
+}
+.get-event:is(input[type="checkbox"]):after,
+.get-event:is(input[type="radio"]):after {
+    --tw-content: attr(aria-label);
+    content: var(--tw-content);
+}
+.get-event:is(input[type="checkbox"]):after,
+.get-event:is(input[type="radio"]):after {
+    --tw-content: attr(aria-label);
+    content: var(--tw-content);
+}
+@media (hover: hover) {
+    .get-event:hover {
+        --tw-border-opacity: 1;
+        border-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-border-opacity)));
+        --tw-bg-opacity: 1;
+        background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+    }
+    @supports (color: color-mix(in oklab, black, black)) {
+        .get-event:hover {
+            background-color: color-mix(
+            in oklab,
+            oklch(var(--get-event-color, var(--b2)) / var(--tw-bg-opacity, 1)) 90%,
+            black
+          );
+            border-color: color-mix(
+            in oklab,
+            oklch(var(--get-event-color, var(--b2)) / var(--tw-border-opacity, 1)) 90%,
+            black
+          );
+        }
+    }
+    @supports not (color: oklch(0% 0 0)) {
+        .get-event:hover {
+            background-color: var(--get-event-color, var(--fallback-b2));
+            border-color: var(--get-event-color, var(--fallback-b2));
+        }
+    }
+}
+@media (hover: hover) {
+    .get-event:hover {
+        --tw-border-opacity: 1;
+        border-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-border-opacity)));
+        --tw-bg-opacity: 1;
+        background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+    }
+    @supports (color: color-mix(in oklab, black, black)) {
+        .get-event:hover {
+            background-color: color-mix(
+            in oklab,
+            oklch(var(--get-event-color, var(--b2)) / var(--tw-bg-opacity, 1)) 90%,
+            black
+          );
+            border-color: color-mix(
+            in oklab,
+            oklch(var(--get-event-color, var(--b2)) / var(--tw-border-opacity, 1)) 90%,
+            black
+          );
+        }
+    }
+    @supports not (color: oklch(0% 0 0)) {
+        .get-event:hover {
+            background-color: var(--get-event-color, var(--fallback-b2));
+            border-color: var(--get-event-color, var(--fallback-b2));
+        }
+    }
+}
+@media (hover: hover) {
+    .get-event:hover {
+        --tw-border-opacity: 1;
+        border-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-border-opacity)));
+        --tw-bg-opacity: 1;
+        background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+    }
+    @supports (color: color-mix(in oklab, black, black)) {
+        .get-event:hover {
+            background-color: color-mix(
+            in oklab,
+            oklch(var(--get-event-color, var(--b2)) / var(--tw-bg-opacity, 1)) 90%,
+            black
+          );
+            border-color: color-mix(
+            in oklab,
+            oklch(var(--get-event-color, var(--b2)) / var(--tw-border-opacity, 1)) 90%,
+            black
+          );
+        }
+    }
+    @supports not (color: oklch(0% 0 0)) {
+        .get-event:hover {
+            background-color: var(--get-event-color, var(--fallback-b2));
+            border-color: var(--get-event-color, var(--fallback-b2));
+        }
+    }
+}
+@media (hover: hover) {
+    .get-event.glass:hover {
+        --glass-opacity: 25%;
+        --glass-border-opacity: 15%;
+    }
+}
+@media (hover: hover) {
+    .get-event-disabled:hover,
+    .get-event[disabled]:hover,
+    .get-event:disabled:hover {
+        --tw-border-opacity: 0;
+        background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+        --tw-bg-opacity: 0.2;
+        color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+        --tw-text-opacity: 0.2;
+    }
+}
+@media (hover: hover) {
+    .get-event-disabled:hover,
+    .get-event[disabled]:hover,
+    .get-event:disabled:hover {
+        --tw-border-opacity: 0;
+        background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+        --tw-bg-opacity: 0.2;
+        color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+        --tw-text-opacity: 0.2;
+    }
+}
+@media (hover: hover) {
+    @supports (color: color-mix(in oklab, black, black)) {
+        .get-event:is(input[type="checkbox"]:checked):hover, .get-event:is(input[type="radio"]:checked):hover {
+            background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
+            border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
+        }
+    }
+}
+@media (hover: hover) {
+    @supports (color: color-mix(in oklab, black, black)) {
+        .get-event:is(input[type="checkbox"]:checked):hover, .get-event:is(input[type="radio"]:checked):hover {
+            background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
+            border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
+        }
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .get-event {
+        animation: get-event-pop var(--animation-get-event, 0.25s) ease-out;
+    }
+}
+.get-event:active:hover,
+  .get-event:active:focus {
+    animation: get-event-pop 0s ease-out;
+    transform: scale(var(--get-event-focus-scale, 0.97));
+}
+.get-event:active:hover,
+  .get-event:active:focus {
+    animation: get-event-pop 0s ease-out;
+    transform: scale(var(--get-event-focus-scale, 0.97));
+}
+@supports not (color: oklch(0% 0 0)) {
+    .get-event {
+        background-color: var(--get-event-color, var(--fallback-b2));
+        border-color: var(--get-event-color, var(--fallback-b2));
+    }
+}
+.get-event:focus-visible {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
+}
+.get-event.glass {
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    outline-color: currentColor;
+}
+.get-event.glass.get-event-active {
+    --glass-opacity: 25%;
+    --glass-border-opacity: 15%;
+}
+.get-event.get-event-disabled,
+  .get-event[disabled],
+  .get-event:disabled {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+}
+.get-event.get-event-disabled,
+  .get-event[disabled],
+  .get-event:disabled {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+}
+.get-event.get-event-disabled,
+  .get-event[disabled],
+  .get-event:disabled {
+    --tw-border-opacity: 0;
+    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    --tw-bg-opacity: 0.2;
+    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    --tw-text-opacity: 0.2;
+}
+.get-event:is(input[type="checkbox"]:checked),
+.get-event:is(input[type="radio"]:checked) {
+    --tw-border-opacity: 1;
+    border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity)));
+    --tw-bg-opacity: 1;
+    background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
+    --tw-text-opacity: 1;
+    color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
+}
+.get-event:is(input[type="checkbox"]:checked),
+.get-event:is(input[type="radio"]:checked) {
+    --tw-border-opacity: 1;
+    border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity)));
+    --tw-bg-opacity: 1;
+    background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
+    --tw-text-opacity: 1;
+    color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
+}
+.get-event:is(input[type="checkbox"]:checked):focus-visible, .get-event:is(input[type="radio"]:checked):focus-visible {
+    outline-color: var(--fallback-p,oklch(var(--p)/1));
+}
+.get-event:is(input[type="checkbox"]:checked):focus-visible, .get-event:is(input[type="radio"]:checked):focus-visible {
+    outline-color: var(--fallback-p,oklch(var(--p)/1));
+}
+.join > :where(*:not(:first-child)):is(.get-event) {
+    margin-inline-start: calc(var(--border-get-event) * -1);
+}
+.join.join-vertical > :where(*:not(:first-child)):is(.get-event) {
+    margin-top: calc(var(--border-get-event) * -1);
+}
+.join.join-horizontal > :where(*:not(:first-child)):is(.get-event) {
+    margin-inline-start: calc(var(--border-get-event) * -1);
+}
