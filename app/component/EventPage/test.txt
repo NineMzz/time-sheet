@@ -8,27 +8,9 @@ interface CalendarEvent {
   end: { dateTime: string };
 }
 
-const mockEvents: CalendarEvent[] = [
-  {
-    subject: "Meeting with Team",
-    start: { dateTime: "2024-07-18T09:00:00Z" },
-    end: { dateTime: "2024-07-18T10:00:00Z" },
-  },
-  {
-    subject: "Lunch with Client",
-    start: { dateTime: "2024-07-18T12:00:00Z" },
-    end: { dateTime: "2024-07-18T13:00:00Z" },
-  },
-  {
-    subject: "Project Presentation",
-    start: { dateTime: "2024-07-18T15:00:00Z" },
-    end: { dateTime: "2024-07-18T16:30:00Z" },
-  },
-];
-
 const EventPage: React.FC = () => {
   const searchParams = useSearchParams();
-  const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>(mockEvents);
+  const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>([]);
 
   useEffect(() => {
     const events = searchParams.get('events');
@@ -51,6 +33,7 @@ const EventPage: React.FC = () => {
 
   const formatDate = (dateTimeString: string) => {
     const date = new Date(dateTimeString);
+    date.setHours(date.getHours() + 7);
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
@@ -63,7 +46,7 @@ const EventPage: React.FC = () => {
   return (
     <div>
       <h2>Calendar Events:</h2>
-      <table style={{ textAlign: 'left', width: '100%', border: '1px solid black' }}>
+      <table style={{ textAlign: 'left' }}>
         <thead>
           <tr>
             <th>Subject</th>
@@ -84,14 +67,14 @@ const EventPage: React.FC = () => {
               <td>
                 <input
                   type="text"
-                  value={formatDate(event.start.dateTime)}
+                  value={event.start.dateTime}
                   onChange={(e) => handleEventChange(index, 'start', e.target.value)}
                 />
               </td>
               <td>
                 <input
                   type="text"
-                  value={formatDate(event.end.dateTime)}
+                  value={event.end.dateTime}
                   onChange={(e) => handleEventChange(index, 'end', e.target.value)}
                 />
               </td>

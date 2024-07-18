@@ -4,6 +4,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { displayCalendarEvents } from '../function/ms-apis';
 import "./homepage.scss";
 
+interface CalendarEvent {
+    subject: string;
+    start: { dateTime: string };
+    end: { dateTime: string };
+  }
+
 const HomePage: React.FC = () => {
   const [calendarEvents, setCalendarEvents] = useState<any[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
@@ -40,13 +46,15 @@ const HomePage: React.FC = () => {
         </div>
         <header className="header">
             
+        <div className="date-container">
             <DatePicker className="date-picker"
             selected={selectedDate}
             onChange={(date: Date | null) => setSelectedDate(date)}
             dateFormat="dd/MM/yyyy"
             />
+        </div>
 
-        <button className="btn" onClick={handleGetEvents}>Get Calendar Events</button>
+        <button className="get-event" onClick={handleGetEvents}>Get Calendar Events</button>
       </header>
     </div>
   );
