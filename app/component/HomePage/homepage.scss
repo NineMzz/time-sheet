@@ -8,7 +8,12 @@
     align-items: center;
     // justify-content: center;
 }
-  
+
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
 .logo {
     margin-top:150px;
     justify-content: center;
@@ -16,7 +21,7 @@
     width:320px;
     height:320px; 
 }
-  
+
 .date-picker {
     font-family: "Nunito", sans-serif;
     font-size: 18px;
