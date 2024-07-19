@@ -9,6 +9,7 @@ const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState("1");
     return (
         <>
+          {/* <HomePage /> */}
           <EventPage />
         </>
     );

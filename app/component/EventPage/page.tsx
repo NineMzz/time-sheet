@@ -28,8 +28,9 @@ const mockEvents: CalendarEvent[] = [
 
 const EventPage: React.FC = () => {
   const searchParams = useSearchParams();
-  const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>(mockEvents); //when testing take out mockEvents
-  //   const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>([]); //use this when testing
+  const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>(mockEvents);
+  const [editIndex, setEditIndex] = useState<number | null>(null);
+  const [editedEvent, setEditedEvent] = useState<CalendarEvent | null>(null);
 
   useEffect(() => {
     const events = searchParams.get('events');
@@ -38,16 +39,33 @@ const EventPage: React.FC = () => {
     }
   }, [searchParams]);
 
-  const handleEventChange = (index: number, key: string, value: string) => {
-    const updatedEvents = [...calendarEvents];
-    if (key === 'subject') {
-      updatedEvents[index].subject = value;
-    } else if (key === 'start') {
-      updatedEvents[index].start.dateTime = value;
-    } else if (key === 'end') {
-      updatedEvents[index].end.dateTime = value;
+  const handleEdit = (index: number) => {
+    setEditIndex(index);
+    setEditedEvent(calendarEvents[index]);
+  };
+
+  const handleSave = () => {
+    if (editIndex !== null && editedEvent !== null) {
+      const updatedEvents = [...calendarEvents];
+      updatedEvents[editIndex] = editedEvent;
+      setCalendarEvents(updatedEvents);
+      setEditIndex(null);
+      setEditedEvent(null);
     }
-    setCalendarEvents(updatedEvents);
+  };
+
+  const handleCancel = () => {
+    setEditIndex(null);
+    setEditedEvent(null);
+  };
+
+  const handleEventChange = (key: string, value: string) => {
+    if (editedEvent) {
+      setEditedEvent({
+        ...editedEvent,
+        [key]: key === 'subject' ? value : { dateTime: value }
+      });
+    }
   };
 
   const formatDate = (dateTimeString: string) => {
@@ -62,56 +80,93 @@ const EventPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className="logo">
-        <img src="/logo.png" alt="logo" />
-      </div>
+      <div className="body">
+        <div className="logo">
+          <img src="/logo.png" alt="logo" />
+        </div>
 
-      <div className="event-container">
-        <div className="tittle">
-          <h1>Event Details</h1>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Project ID</th>
-              <th>Start Time Date</th>
-              <th>End Time Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {calendarEvents.map((event, index) => (
-              <tr key={index}>
-                <td>
-                  <input
-                    type="text"
-                    value={event.subject}
-                    onChange={(e) => handleEventChange(index, 'subject', e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    value={formatDate(event.start.dateTime)}
-                    onChange={(e) => handleEventChange(index, 'start', e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    value={formatDate(event.end.dateTime)}
-                    onChange={(e) => handleEventChange(index, 'end', e.target.value)}
-                  />
-                </td>
+        <div className="event-container shadow-xl">
+          <div className="tittle">
+            <h1>Event Details</h1>
+          </div>
+
+          <div >
+            <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
+          </div>
+          <table className="shadow-xl">
+            {/* <colgroup>
+              <col style={{ width: '15%' }} /> 
+              <col style={{ width: '15%' }} />
+              <col style={{ width: '15%' }} />
+              <col style={{ width: 'auto' }} />
+            </colgroup> */}
+            <thead>
+              <tr>
+                <th>Project ID</th>
+                <th>Start Time Date</th>
+                <th>End Time Date</th>
+                <th className="actions-column">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="pagination text-left text-sm text-gray-600">
-          Showing 1 to {calendarEvents.length} of {calendarEvents.length} results
+            </thead>
+            <tbody>
+              {calendarEvents.map((event, index) => (
+                <tr key={index}>
+                  <td>
+                    {editIndex === index ? (
+                      <input
+                        type="text"
+                        value={editedEvent?.subject || ''}
+                        onChange={(e) => handleEventChange('subject', e.target.value)}
+                      />
+                    ) : (
+                      event.subject
+                    )}
+                  </td>
+                  <td>
+                    {editIndex === index ? (
+                      <input
+                        type="text"
+                        value={editedEvent?.start.dateTime || ''}
+                        onChange={(e) => handleEventChange('start', e.target.value)}
+                      />
+                    ) : (
+                      formatDate(event.start.dateTime)
+                    )}
+                  </td>
+                  <td>
+                    {editIndex === index ? (
+                      <input
+                        type="text"
+                        value={editedEvent?.end.dateTime || ''}
+                        onChange={(e) => handleEventChange('end', e.target.value)}
+                      />
+                    ) : (
+                      formatDate(event.end.dateTime)
+                    )}
+                  </td>
+                  <td className="edit">
+                    {editIndex === index ? (
+                      <>
+                        <button onClick={handleSave}>Save</button>
+                        <button onClick={handleCancel}>Cancel</button>
+                      </>
+                    ) : (
+                      <button onClick={() => handleEdit(index)}>Edit</button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="pagination text-left text-sm text-gray-600">
+            Showing 1 to {calendarEvents.length} of {calendarEvents.length} results
+          </div>
         </div>
+
+        <div className="update-container">
+            <button className="btn update-button">Update to ClickUp</button>
+          </div>
       </div>
-    </div>
   );
 };
 
