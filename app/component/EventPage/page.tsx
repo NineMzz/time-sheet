@@ -28,7 +28,8 @@ const mockEvents: CalendarEvent[] = [
 
 const EventPage: React.FC = () => {
   const searchParams = useSearchParams();
-  const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>(mockEvents);
+  const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>(mockEvents); //when testing take out mockEvents
+  //   const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>([]); //use this when testing
 
   useEffect(() => {
     const events = searchParams.get('events');
@@ -62,43 +63,51 @@ const EventPage: React.FC = () => {
 
   return (
     <div>
-      <h2>Calendar Events:</h2>
-      <table style={{ textAlign: 'left', width: '100%', border: '1px solid black' }}>
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>Start</th>
-            <th>End</th>
-          </tr>
-        </thead>
-        <tbody>
-          {calendarEvents.map((event, index) => (
-            <tr key={index}>
-              <td>
-                <input
-                  type="text"
-                  value={event.subject}
-                  onChange={(e) => handleEventChange(index, 'subject', e.target.value)}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={formatDate(event.start.dateTime)}
-                  onChange={(e) => handleEventChange(index, 'start', e.target.value)}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={formatDate(event.end.dateTime)}
-                  onChange={(e) => handleEventChange(index, 'end', e.target.value)}
-                />
-              </td>
+      <div className="logo">
+        <img src="/logo.png" alt="logo" />
+      </div>
+
+      <div className="event-container">
+        <div className="tittle">
+          <h1>Event Details</h1>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Project ID</th>
+              <th>Start Time Date</th>
+              <th>End Time Date</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {calendarEvents.map((event, index) => (
+              <tr key={index}>
+                <td>
+                  <input
+                    type="text"
+                    value={event.subject}
+                    onChange={(e) => handleEventChange(index, 'subject', e.target.value)}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={formatDate(event.start.dateTime)}
+                    onChange={(e) => handleEventChange(index, 'start', e.target.value)}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={formatDate(event.end.dateTime)}
+                    onChange={(e) => handleEventChange(index, 'end', e.target.value)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
