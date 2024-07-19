@@ -124,8 +124,15 @@ const EventPage: React.FC = () => {
                         ))}
                     </tbody>
                 </table>
-                <div className="pagination text-left text-sm text-gray-600">
-                    Showing 1 to {events.length} of {events.length} results
+
+                <div className="update-bar">
+                    <div className="pagination text-left text-sm text-gray-600 flex-1">
+                        Showing 1 to {events.length} of {events.length} results
+                    </div>
+
+                    <div>
+                        <button className="btn">Update to ClickUp</button>
+                    </div>
                 </div>
             </div>
         </div>

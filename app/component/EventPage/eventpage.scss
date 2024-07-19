@@ -76,6 +76,11 @@
         background-color: #0056b3;
     }
 }
+
+.update-bar {
+    display: flex;
+    flex-direction: row;
+}
 .pagination {
     font-family: Nunito, sans-serif;
     text-align: left;

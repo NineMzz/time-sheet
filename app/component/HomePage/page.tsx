@@ -56,7 +56,6 @@ const HomePage: React.FC = () => {
         return `${day}/${month}/${year} ${hours}:${minutes} ${ampm}`;
     };
 
-
     return (
         <>
             <div className="homepage-container">
