@@ -29,6 +29,7 @@ const mockEvents: CalendarEvent[] = [
 const EventPage: React.FC = () => {
   const searchParams = useSearchParams();
   const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>(mockEvents);
+  // const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>([]); when you need to test
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [editedEvent, setEditedEvent] = useState<CalendarEvent | null>(null);
 

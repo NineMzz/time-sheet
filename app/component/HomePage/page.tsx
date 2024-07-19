@@ -8,6 +8,7 @@ interface CalendarEvent {
     subject: string;
     start: { dateTime: string };
     end: { dateTime: string };
+
   }
 
 const HomePage: React.FC = () => {
