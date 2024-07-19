@@ -107,6 +107,9 @@ const EventPage: React.FC = () => {
             ))}
           </tbody>
         </table>
+        <div className="pagination text-left text-sm text-gray-600">
+          Showing 1 to {calendarEvents.length} of {calendarEvents.length} results
+        </div>
       </div>
     </div>
   );
