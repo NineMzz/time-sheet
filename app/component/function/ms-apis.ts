@@ -62,6 +62,7 @@ async function fetchCalendarEvents(accessToken: string, selectedDate: string): P
   const selectedDateMidnightISO = selectedDateMidnight.toISOString();
   console.log("Selected date midnight:", selectedDateMidnightISO);
 
+  // https://learn.microsoft.com/en-us/graph/api/resources/event?view=graph-rest-1.0 use for look up of event properties
   try {
     const response = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/calendarView?startDateTime=${selectedDate}&endDateTime=${selectedDateMidnightISO}`, {
       headers: {
