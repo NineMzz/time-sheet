@@ -55,10 +55,11 @@ const EventPage: React.FC = () => {
     }
   };
 
-  const handleCancel = () => {
-    setEditIndex(null);
-    setEditedEvent(null);
-  };
+  // It used to be cancel button but it useless now
+  // const handleCancel = () => {
+  //   setEditIndex(null);
+  //   setEditedEvent(null);
+  // };
 
   const handleEventChange = (key: string, value: string) => {
     if (editedEvent) {
@@ -145,14 +146,14 @@ const EventPage: React.FC = () => {
                       formatDate(event.end.dateTime)
                     )}
                   </td>
-                  <td className="edit">
+                  <td>
                     {editIndex === index ? (
                       <>
-                        <button onClick={handleSave}>Save</button>
-                        <button onClick={handleCancel}>Cancel</button>
+                        <button className="savechange-button" onClick={handleSave}>Save change</button>
+                        {/* <button onClick={handleCancel}>Cancel</button> */}
                       </>
                     ) : (
-                      <button onClick={() => handleEdit(index)}>Edit</button>
+                      <button className="edit-button" onClick={() => handleEdit(index)}>Edit</button>
                     )}
                   </td>
                 </tr>
