@@ -1,5 +1,5 @@
 import { PublicClientApplication, AccountInfo, AuthenticationResult } from "@azure/msal-browser";
-import { loginRequest } from "./authConfig"; // Assuming you have an authConfig.ts file
+import { loginRequest } from "./authConfig"; 
 
 const msalInstance = new PublicClientApplication(loginRequest);
 

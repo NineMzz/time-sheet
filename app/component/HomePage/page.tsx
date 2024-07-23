@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from "next/navigation";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { displayCalendarEvents } from '../function/ms-apis';
@@ -14,6 +15,11 @@ interface CalendarEvent {
 const HomePage: React.FC = () => {
   const [calendarEvents, setCalendarEvents] = useState<any[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+
+  const Router = useRouter();
+  const handleEventPage = () => {
+      Router.push("/component/EventPage");
+  };
 
   const handleGetEvents = async () => {
     try {
@@ -56,6 +62,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <button className="get-event" onClick={handleGetEvents}>Get Calendar Events</button>
+        <button className="get-event" onClick={handleEventPage}>To Event Page</button>
       </header>
     </div>
   );

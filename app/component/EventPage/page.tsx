@@ -1,4 +1,6 @@
+"use client"
 import React, { useEffect, useState } from 'react';
+import { useRouter } from "next/navigation";
 import { useSearchParams } from 'next/navigation';
 import "./eventpage.scss";
 
@@ -8,28 +10,28 @@ interface CalendarEvent {
   end: { dateTime: string };
 }
 
-const mockEvents: CalendarEvent[] = [
-  {
-    subject: "Meeting with Team",
-    start: { dateTime: "2024-07-18T09:00:00Z" },
-    end: { dateTime: "2024-07-18T10:00:00Z" },
-  },
-  {
-    subject: "Lunch with Client",
-    start: { dateTime: "2024-07-18T12:00:00Z" },
-    end: { dateTime: "2024-07-18T13:00:00Z" },
-  },
-  {
-    subject: "Project Presentation",
-    start: { dateTime: "2024-07-18T15:00:00Z" },
-    end: { dateTime: "2024-07-18T16:30:00Z" },
-  },
-];
+// const mockEvents: CalendarEvent[] = [
+//   {
+//     subject: "Meeting with Team",
+//     start: { dateTime: "2024-07-18T09:00:00Z" },
+//     end: { dateTime: "2024-07-18T10:00:00Z" },
+//   },
+//   {
+//     subject: "Lunch with Client",
+//     start: { dateTime: "2024-07-18T12:00:00Z" },
+//     end: { dateTime: "2024-07-18T13:00:00Z" },
+//   },
+//   {
+//     subject: "Project Presentation",
+//     start: { dateTime: "2024-07-18T15:00:00Z" },
+//     end: { dateTime: "2024-07-18T16:30:00Z" },
+//   },
+// ];
 
 const EventPage: React.FC = () => {
   const searchParams = useSearchParams();
-  const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>(mockEvents);
-  // const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>([]); when you need to test
+  // const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>(mockEvents);
+  const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>([]); //when you need to test
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [editedEvent, setEditedEvent] = useState<CalendarEvent | null>(null);
 
