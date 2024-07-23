@@ -25,11 +25,12 @@ async function login(): Promise<AccountInfo | null> {
 }
 
 interface CalendarEvent {
-  start: {
-    dateTime: string;
-  };
-  // Define other properties of a calendar event as needed
+  subject: string;
+  start: { dateTime: string };
+  end: { dateTime: string };
+  body: { content: string; contentType: string };
 }
+
 
 async function displayCalendarEvents(selectedDate: string): Promise<CalendarEvent[]> {
   try {
@@ -64,11 +65,11 @@ async function fetchCalendarEvents(accessToken: string, selectedDate: string): P
 
   // https://learn.microsoft.com/en-us/graph/api/resources/event?view=graph-rest-1.0 use for look up of event properties
   try {
-    const response = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/calendarView?startDateTime=${selectedDate}&endDateTime=${selectedDateMidnightISO}`, {
+    const response = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/calendarView?startDateTime=${selectedDate}&endDateTime=${selectedDateMidnightISO}&$select=subject,start,end,body`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-    });
+    });    
 
     if (!response.ok) {
       console.error(response);

@@ -8,6 +8,7 @@ interface CalendarEvent {
   subject: string;
   start: { dateTime: string };
   end: { dateTime: string };
+  body: { content: string; contentType: string };
 }
 
 // const mockEvents: CalendarEvent[] = [
@@ -109,6 +110,7 @@ const EventPage: React.FC = () => {
                 <th>Project ID</th>
                 <th>Start Time Date</th>
                 <th>End Time Date</th>
+                <th>Note</th>
                 <th className="actions-column">Actions</th>
               </tr>
             </thead>
@@ -148,6 +150,7 @@ const EventPage: React.FC = () => {
                       formatDate(event.end.dateTime)
                     )}
                   </td>
+
                   <td>
                     {editIndex === index ? (
                       <>

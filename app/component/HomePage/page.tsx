@@ -6,11 +6,11 @@ import { displayCalendarEvents } from '../function/ms-apis';
 import "./homepage.scss";
 
 interface CalendarEvent {
-    subject: string;
-    start: { dateTime: string };
-    end: { dateTime: string };
-
-  }
+  subject: string;
+  start: { dateTime: string };
+  end: { dateTime: string };
+  body: { content: string; contentType: string };
+}
 
 const HomePage: React.FC = () => {
   const [calendarEvents, setCalendarEvents] = useState<any[]>([]);
@@ -47,18 +47,17 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="homepage-container">
-      
-        <div className="">
-            <img src="./logo.png" className="logo" alt="logo" />
-        </div>
-        <header className="header">
-            
+      <div className="">
+        <img src="./logo.png" className="logo" alt="logo" />
+      </div>
+      <header className="header">
         <div className="date-container">
-            <DatePicker className="date-picker"
+          <DatePicker
+            className="date-picker"
             selected={selectedDate}
             onChange={(date: Date | null) => setSelectedDate(date)}
             dateFormat="dd/MM/yyyy"
-            />
+          />
         </div>
 
         <button className="get-event" onClick={handleGetEvents}>Get Calendar Events</button>
